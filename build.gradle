@@ -12,7 +12,6 @@ buildscript {
         materialVersion = '1.2.1'
         constraintVersion = '2.0.4'
         recyclerVersion = '1.1.0'
-        viewModelKtxVersion = '2.2.0'
         rxJavaVersion = '2.2.15'
         rxAndroidVersion = '2.1.1'
         rxKotlinVersion = '2.4.0'
