@@ -28,8 +28,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
     }
 
     private fun setupObserve() {
-        viewModel.items.observe(this) { items ->
-            mainAdapter.setItems(items)
+        viewModel.shoppingItems.observe(this) { items ->
+            mainAdapter.setShoppingItems(items)
         }
         viewModel.openDetailEvent.observe(this) { link ->
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))

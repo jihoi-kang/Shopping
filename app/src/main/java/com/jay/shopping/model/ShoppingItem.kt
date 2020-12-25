@@ -1,6 +1,6 @@
 package com.jay.shopping.model
 
-data class Item(
+data class ShoppingItem(
     val brand: String,
     val category1: String,
     val category2: String,

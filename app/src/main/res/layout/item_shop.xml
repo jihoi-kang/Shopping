@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.jay.shopping.model.Item" />
+            type="com.jay.shopping.model.ShoppingItem" />
 
         <variable
             name="viewModel"

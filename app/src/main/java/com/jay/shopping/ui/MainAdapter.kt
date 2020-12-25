@@ -6,17 +6,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.jay.shopping.R
 import com.jay.shopping.databinding.ItemShopBinding
-import com.jay.shopping.model.Item
+import com.jay.shopping.model.ShoppingItem
 
 class MainAdapter(
     private val viewModel: MainViewModel
 ) : RecyclerView.Adapter<MainViewHolder>() {
 
-    private val items: MutableList<Item> = mutableListOf()
+    private val shoppingItems: MutableList<ShoppingItem> = mutableListOf()
 
-    fun setItems(items: List<Item>) {
-        this.items.clear()
-        this.items.addAll(items)
+    fun setShoppingItems(shoppingItems: List<ShoppingItem>) {
+        this.shoppingItems.clear()
+        this.shoppingItems.addAll(shoppingItems)
         notifyDataSetChanged()
     }
 
@@ -31,9 +31,9 @@ class MainAdapter(
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(shoppingItems[position])
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = shoppingItems.size
 
 }

@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface ShoppingService {
 
     @GET("/v1/search/shop")
-    fun getShopping(
+    fun getShoppingItems(
         @Query("query") query: String,
     ) : Single<ShoppingResponse>
 

@@ -1,10 +1,10 @@
 package com.jay.shopping.api
 
-import com.jay.shopping.model.Item
+import com.jay.shopping.model.ShoppingItem
 
 data class ShoppingResponse(
     val display: Int,
-    val items: List<Item>,
+    val items: List<ShoppingItem>,
     val lastBuildDate: String,
     val start: Int,
     val total: Int
