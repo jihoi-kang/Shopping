@@ -8,6 +8,7 @@ import com.jay.shopping.data.ShoppingRepository
 import com.jay.shopping.model.ShoppingItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -25,16 +26,18 @@ class MainViewModel @Inject constructor(
     fun search() {
         val query = query.value ?: return
 
+        showLoading()
         shoppingRepository.getShoppingItems(query)
-
-        shoppingRepository.getShoppingItems(query)
+            .subscribeOn(Schedulers.io())
             .map { it.items }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { items ->
                     _shoppingItems.value = items
+                    hideLoading()
                 }, { error ->
                     Log.e("TAG", "failed: ${error.message}")
+                    hideLoading()
                 }
             ).addTo(disposable)
     }
