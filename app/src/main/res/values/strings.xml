@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Shopping</string>
     <string name="lowest_price_fmt">The lowest price: %1$s won</string>
+    <string name="msg_no_results_found">No results found.</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.jay.shopping.ui
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jay.shopping.base.BaseViewModel
@@ -22,6 +21,9 @@ class MainViewModel @Inject constructor(
     private val _openDetailEvent = MutableLiveData<String>()
     val openDetailEvent: LiveData<String> get() = _openDetailEvent
 
+    private val _errorToastEvent = MutableLiveData<String>()
+    val errorToastEvent: LiveData<String> get() = _errorToastEvent
+
     fun getCachedShoppingItems() {
         showLoading()
         val items = shoppingRepository.getCachedShoppingItems()
@@ -40,7 +42,7 @@ class MainViewModel @Inject constructor(
                     _shoppingItems.value = items
                     hideLoading()
                 }, { error ->
-                    Log.e("TAG", "failed: ${error.message}")
+                    _errorToastEvent.value = error.message
                     hideLoading()
                 }
             ).addTo(disposable)
