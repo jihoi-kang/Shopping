@@ -1,5 +1,8 @@
 package com.jay.shopping.model
 
+import androidx.room.Entity
+
+@Entity(primaryKeys = [("title")])
 data class ShoppingItem(
     val brand: String,
     val category1: String,

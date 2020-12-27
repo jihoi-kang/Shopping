@@ -1,9 +1,6 @@
 package com.jay.shopping.di
 
-import com.jay.shopping.data.ShoppingRemoteDataSource
-import com.jay.shopping.data.ShoppingRemoteDataSourceImpl
-import com.jay.shopping.data.ShoppingRepository
-import com.jay.shopping.data.ShoppingRepositoryImpl
+import com.jay.shopping.data.*
 import dagger.Binds
 import dagger.Module
 
@@ -15,5 +12,8 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindShoppingRemoteDataSource(shoppingRemoteDataSourceImpl: ShoppingRemoteDataSourceImpl): ShoppingRemoteDataSource
+
+    @Binds
+    abstract fun bindShoppingLocalDataSource(shoppingLocalDataSourceImpl: ShoppingLocalDataSourceImpl): ShoppingLocalDataSource
 
 }

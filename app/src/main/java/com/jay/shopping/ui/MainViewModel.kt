@@ -8,7 +8,6 @@ import com.jay.shopping.data.ShoppingRepository
 import com.jay.shopping.model.ShoppingItem
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -17,19 +16,24 @@ class MainViewModel @Inject constructor(
 
     var query = MutableLiveData<String>()
 
-    private val _shoppingItems = MutableLiveData<List<ShoppingItem>>()
+    private val _shoppingItems: MutableLiveData<List<ShoppingItem>> = MutableLiveData(emptyList())
     val shoppingItems: LiveData<List<ShoppingItem>> get() = _shoppingItems
 
     private val _openDetailEvent = MutableLiveData<String>()
     val openDetailEvent: LiveData<String> get() = _openDetailEvent
+
+    fun getCachedShoppingItems() {
+        showLoading()
+        val items = shoppingRepository.getCachedShoppingItems()
+        hideLoading()
+        _shoppingItems.value = items
+    }
 
     fun search() {
         val query = query.value ?: return
 
         showLoading()
         shoppingRepository.getShoppingItems(query)
-            .subscribeOn(Schedulers.io())
-            .map { it.items }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { items ->

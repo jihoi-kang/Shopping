@@ -21,6 +21,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(
 
         setupUi()
         setupObserve()
+
+        viewModel.getCachedShoppingItems()
     }
 
     private fun setupUi() {
